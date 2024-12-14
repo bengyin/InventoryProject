@@ -1,9 +1,6 @@
-@software{Mak_Beng_Yin_SD_DEVOPS_InventoryProject_2024,
-  author = {Mak Beng Yin},
-  doi = { },
-  month = {12},
-  title = {{InventoryProject}},
-  url = {https://github.com/bengyin/InventoryProject.git},
-  version = {0.0.1},
-  year = {2024}
-}
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Mak"
+  given-names: "Beng-Yin"
+title: "SD DEVOPS InventoryProject 2024"
+version: 0.0.1
