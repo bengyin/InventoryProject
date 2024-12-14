@@ -1,0 +1,9 @@
+@software{Mak_Beng_Yin_SD_DEVOPS_InventoryProject_2024,
+  author = {Mak Beng Yin},
+  doi = { },
+  month = {12},
+  title = {{InventoryProject}},
+  url = {https://github.com/bengyin/InventoryProject.git},
+  version = {0.0.1},
+  year = {2024}
+}
