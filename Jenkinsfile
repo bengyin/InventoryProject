@@ -22,19 +22,19 @@ pipeline{
 		}
 		stage("build"){
 			steps{
-				echo "Start build"
+				echo "Start Build"
 				bat "mvn install -DskipTests"
 			}
 		}
 		stage("Docker build"){
 			steps{
-				echo "Start Docker build"
+				echo "Start Docker Build"
 				/* bat "docker build -t bengyin/jenkins_maven.eclipse:latest ." */
 			}
 		}
 		stage("SonarQube analysis") {
 			steps{
-				echo "Start SonarQube"
+				echo "Start SonarQube Analysis"
 				withSonarQubeEnv('SonarQube') {
 					bat "${env.SONAR_RUNNER_HOME}\\bin\\sonar-scanner.bat -Dsonar.projectKey=InventoryProject -Dsonar.java.binaries=target/classes"
 				}
