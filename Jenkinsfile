@@ -40,6 +40,13 @@ pipeline{
 				}
 			}
 		}
+		stage('Debug Branch') {
+			steps {
+				script {
+					echo "Current branch: ${env.GIT_BRANCH}"
+				}
+			}
+		}
 		stage("Deploy to Tomcat") {
 /*			when {
 				branch 'main'
