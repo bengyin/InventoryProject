@@ -55,7 +55,7 @@ pipeline{
                     
 					bat """
 					curl -u ${tomcatUser}:${tomcatPassword} -T ${warFile} \
-					${tomcatUrl}/manager/text/deploy?path=/InventoryProject/UserServlet/dashboard&update=true
+					${tomcatUrl}/manager/text/deploy?path=/InventoryProject&update=true
 					"""
 				}
 			}
