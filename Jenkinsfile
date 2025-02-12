@@ -40,6 +40,26 @@ pipeline{
 				}
 			}
 		}
+		stage("Deploy to Tomcat") {
+			when {
+				branch 'main' // Deploy only from the main branch
+			}
+			steps {
+				script {
+					def warFile = "**/*.war"
+					def tomcatUser = "tomcat"
+					def tomcatPassword = "password"
+					def tomcatUrl = "http://localhost:8091"
+
+					echo "Deploying WAR file to Tomcat..."
+                    
+					bat """
+					curl -u ${tomcatUser}:${tomcatPassword} -T ${warFile} \
+					${tomcatUrl}/manager/text/deploy?path=/your-app&update=true
+					"""
+				}
+			}
+		}
 	}
 } 
 
