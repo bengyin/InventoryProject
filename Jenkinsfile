@@ -48,9 +48,9 @@ pipeline{
 			}
 		}
 		stage("Deploy to Tomcat") {
-/*			when {
-				branch 'main'
-			} */
+			when {
+				branch '*/main'
+			}
 			steps {
 				script {
 					def warFile = "**/*.war"
