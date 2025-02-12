@@ -42,7 +42,7 @@ pipeline{
 		}
 		stage("Deploy to Tomcat") {
 			when {
-				branch 'main' // Deploy only from the main branch
+				branch 'main'
 			}
 			steps {
 				script {
