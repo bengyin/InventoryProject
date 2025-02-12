@@ -49,7 +49,7 @@ pipeline{
 		}
 		stage("Deploy to Tomcat") {
 			when {
-				branch '*/main'
+				branch 'origin/main'
 			}
 			steps {
 				script {
