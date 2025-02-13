@@ -72,7 +72,7 @@ pipeline{
 			steps {
 				script {
 					// Find the WAR file
-					def warFile = findFiles(glob: '**/*.war')[0]
+					def warFile = 'target/inventory-project.war'
 					echo "WAR File: ${warFile}"
 					
 					// Tomcat Manager URL and credentials
@@ -83,7 +83,7 @@ pipeline{
 					// Deploy the WAR file using curl
 					bat """
 					curl -v -u ${tomcatUser}:${tomcatPassword} \
-					-T ${warFile.path} \
+					-T ${warFile} \
 					${tomcatUrl}/deploy?path=/InventoryProject
 					"""
 				}
