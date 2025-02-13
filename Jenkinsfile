@@ -72,7 +72,7 @@ pipeline{
 			steps {
 				script {
 					// Find the WAR file
-					def warFile = '**/inventory-project.war'
+					def warFile = 'target\\inventory-project.war'
 					
 					// Tomcat Manager URL and credentials
 					def tomcatUrl = 'http://localhost:8091/manager/text'
