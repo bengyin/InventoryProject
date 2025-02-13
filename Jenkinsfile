@@ -87,7 +87,7 @@ pipeline{
 					bat """
 					curl -v -u ${tomcatUser}:${tomcatPassword} \
 					-T ${warFile} \
-					${tomcatUrl}/deploy?path=/InventoryProject
+					${tomcatUrl}/redeploy?path=/InventoryProject
 					"""
 				}
 			}
