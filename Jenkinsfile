@@ -68,9 +68,6 @@ pipeline{
 				}
 			}
 		} */
-		    stages {
-        // Other stages like build, test, etc.
-
 		stage('Deploy to Tomcat') {
 			steps {
 				script {
@@ -93,4 +90,3 @@ pipeline{
 		}
 	}
 } 
-
