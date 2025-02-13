@@ -86,14 +86,13 @@ pipeline{
 					// Deploy the WAR file using curl
 					bat """
 					curl -v -u ${tomcatUser}:${tomcatPassword} \
-					-T ${warFile} \
 					${tomcatUrl}/undeploy?path=/InventoryProject
 					"""
 					
 					bat """
 					curl -v -u ${tomcatUser}:${tomcatPassword} \
 					-T ${warFile} \
-					${tomcatUrl}/deploy?path=/InventoryProject
+					${tomcatUrl}/deploy?path=/InventoryProject&update=true
 					"""
 				}
 			}
