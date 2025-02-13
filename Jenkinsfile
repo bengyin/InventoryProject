@@ -44,6 +44,7 @@ pipeline{
 			steps {
 				script {
 					echo "Current branch: ${env.GIT_BRANCH}"
+					echo "Job name: ${env.JOB_NAME}"
 				}
 			}
 		}
@@ -53,7 +54,7 @@ pipeline{
 			}
 			steps {
 				script {
-					def warFile = "**/*.war"
+					def warFile = "target/*.war"
 					def tomcatUser = "tomcat"
 					def tomcatPassword = "password"
 					def tomcatUrl = "http://localhost:8091"
