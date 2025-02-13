@@ -40,6 +40,7 @@ pipeline{
 				}
 			}
 		}
+/*
 		stage('Debug Branch') {
 			steps {
 				script {
@@ -48,7 +49,7 @@ pipeline{
 				}
 			}
 		}
-/*		stage("Deploy to Tomcat") {
+		stage("Deploy to Tomcat") {
 			when {
 				branch 'origin/main'
 			}
@@ -73,7 +74,9 @@ pipeline{
 				script {
 					// Find the WAR file
 					def warFile = 'target/inventory-project.war'
+					/*
 					echo "WAR File: ${warFile}"
+					*/
 					
 					// Tomcat Manager URL and credentials
 					def tomcatUrl = 'http://localhost:8091/manager/text'
