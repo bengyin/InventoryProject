@@ -65,12 +65,14 @@ pipeline{
 					def tomcatPassword = 'password'
 
 					// Undeploy the WAR file using curl
+					echo "Start Undeploy..."
 					bat """
 					curl -v -u ${tomcatUser}:${tomcatPassword} \
 					${tomcatUrl}/undeploy?path=/InventoryProject
 					"""
 					
 					// Deploy the WAR file using curl
+					echo "Start Deploy..."
 					bat """
 					curl -v -u ${tomcatUser}:${tomcatPassword} \
 					-T ${warFile} \
