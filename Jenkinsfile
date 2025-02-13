@@ -73,6 +73,7 @@ pipeline{
 				script {
 					// Find the WAR file
 					def warFile = findFiles(glob: '**/*.war')[0]
+					echo "WAR File: ${warFile}"
 					
 					// Tomcat Manager URL and credentials
 					def tomcatUrl = 'http://localhost:8091/manager/text'
