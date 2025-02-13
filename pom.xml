@@ -98,6 +98,6 @@
 				</executions>
 			</plugin>
 		</plugins>
-		<finalName>inventoryproject</finalName>
+		<finalName>inventory-project</finalName>
 	</build>
 </project>
