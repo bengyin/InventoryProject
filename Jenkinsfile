@@ -81,9 +81,9 @@ pipeline{
 
 					// Deploy the WAR file using curl
 					bat """
-						curl -v -u ${tomcatUser}:${tomcatPassword} \
-						-T ${warFile.path} \
-						${tomcatUrl}/deploy?path=/InventorySystem
+					curl -v -u ${tomcatUser}:${tomcatPassword} \
+					-T ${warFile.path} \
+					${tomcatUrl}/deploy?path=/InventorySystem
 					"""
 				}
 			}
