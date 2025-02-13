@@ -26,18 +26,18 @@ pipeline{
 				bat "mvn install -DskipTests"
 			}
 		}
-		stage("Docker build"){
-			steps{
-				echo "Start Docker Build"
-				bat "docker build -t bengyin/inventoryproject:latest ."
-			}
-		}
 		stage("SonarQube analysis") {
 			steps{
 				echo "Start SonarQube Analysis"
 				withSonarQubeEnv('SonarQube') {
 					bat "${env.SONAR_RUNNER_HOME}\\bin\\sonar-scanner.bat -Dsonar.projectKey=InventoryProject -Dsonar.java.binaries=target/classes"
 				}
+			}
+		}
+		stage("Docker build"){
+			steps{
+				echo "Start Docker Build"
+				bat "docker build -t bengyin/inventoryproject:latest ."
 			}
 		}
 /*
@@ -49,26 +49,7 @@ pipeline{
 				}
 			}
 		}
-		stage("Deploy to Tomcat") {
-			when {
-				branch 'origin/main'
-			}
-			steps {
-				script {
-					def warFile = "target/*.war"
-					def tomcatUser = "tomcat"
-					def tomcatPassword = "password"
-					def tomcatUrl = "http://localhost:8091"
-
-					echo "Deploying WAR file to Tomcat..."
-                    
-					bat """
-					curl -u ${tomcatUser}:${tomcatPassword} -T ${warFile} \
-					${tomcatUrl}/manager/text/deploy?path=/InventoryProject&update=true
-					"""
-				}
-			}
-		} */
+*/
 		stage('Deploy to Tomcat') {
 			steps {
 				script {
@@ -83,12 +64,13 @@ pipeline{
 					def tomcatUser = 'tomcat'
 					def tomcatPassword = 'password'
 
-					// Deploy the WAR file using curl
+					// Undeploy the WAR file using curl
 					bat """
 					curl -v -u ${tomcatUser}:${tomcatPassword} \
 					${tomcatUrl}/undeploy?path=/InventoryProject
 					"""
 					
+					// Deploy the WAR file using curl
 					bat """
 					curl -v -u ${tomcatUser}:${tomcatPassword} \
 					-T ${warFile} \
