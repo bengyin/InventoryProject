@@ -48,7 +48,7 @@ pipeline{
 				}
 			}
 		}
-		stage("Deploy to Tomcat") {
+/*		stage("Deploy to Tomcat") {
 			when {
 				branch 'origin/main'
 			}
@@ -64,6 +64,29 @@ pipeline{
 					bat """
 					curl -u ${tomcatUser}:${tomcatPassword} -T ${warFile} \
 					${tomcatUrl}/manager/text/deploy?path=/InventoryProject&update=true
+					"""
+				}
+			}
+		} */
+		    stages {
+        // Other stages like build, test, etc.
+
+		stage('Deploy to Tomcat') {
+			steps {
+				script {
+					// Find the WAR file
+					def warFile = findFiles(glob: '**/*.war')[0]
+
+					// Tomcat Manager URL and credentials
+					def tomcatUrl = 'http://localhost:8091/manager/text'
+					def tomcatUser = 'tomcat'
+					def tomcatPassword = 'password'
+
+					// Deploy the WAR file using curl
+					bat """
+						curl -v -u ${tomcatUser}:${tomcatPassword} \
+						-T ${warFile.path} \
+						${tomcatUrl}/deploy?path=/InventorySystem
 					"""
 				}
 			}
